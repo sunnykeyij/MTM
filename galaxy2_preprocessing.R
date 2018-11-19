@@ -50,6 +50,12 @@ list_galaxy2[noactorvec] <- NULL
 # actor별로 대사 붙이기 + 데이터프레임 만들기
 actor_word <- function(x){
 actor_seps <- actor_sep(x)
+    
+  if (length(x) == actor_idn[length(actor_idn)]){
+    x[length(x)] <- tolower(x[length(x)])
+    actor_idn <- fun_actor_sep(x)
+  }
+  
 actor_list <- lapply(1:(length(actor_seps)-1), function(i) tryCatch(paste(x[(actor_seps[i]+1):(actor_seps[i+1]-1)],collapse = " "), error=function(e){}, warning=function(e){}))
 if (length(x)>1){
 actor_list [[length(actor_seps)]] <- x[(actor_seps[length(actor_seps)]+1):length(x)]
