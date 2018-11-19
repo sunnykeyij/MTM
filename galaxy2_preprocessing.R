@@ -35,6 +35,7 @@ actor_sep <- function(x){
   return(seps)
 }
 
+
 # 예
 actor_sep(list_galaxy2[[1]])
 actor_sep(list_galaxy2[[2]])
