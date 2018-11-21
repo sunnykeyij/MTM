@@ -59,3 +59,4 @@ scens <- rep(x=script_galaxy1[scens_galaxy1[scens_by_actor]],times=reptimes)
 
 # 최종 데이터프레임을 만듭니다.
 dataframe_galaxy1 <- data.frame(scene=scens, actor=actor, words=words)
+save(dataframe_galaxy1,file="dataframe_galaxy1.Rda")
