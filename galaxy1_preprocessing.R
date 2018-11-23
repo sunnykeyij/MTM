@@ -49,7 +49,9 @@ diff_words <- diff(seps_galaxy1)-1                                # 사이에 �
 reptimes <- diff_words[!(seps_galaxy1 %in% scens_galaxy1)]        # 대사있는 것만 추출
 
 words <- script_galaxy1[-c(scens_galaxy1,actor_galaxy1)]          # 대사
+words <- bracketX(words)  
 actor <- rep(x=script_galaxy1[actor_galaxy1],times=reptimes)      # 배우 
+actor <- bracketX(actor)                                            # 등장인물 - 괄호 (배우이름) 제거
 
 scens_by_actor <- c()
 for (i in 1:length(actor_galaxy1)){
@@ -60,3 +62,11 @@ scens <- rep(x=script_galaxy1[scens_galaxy1[scens_by_actor]],times=reptimes)
 # 최종 데이터프레임을 만듭니다.
 dataframe_galaxy1 <- data.frame(scene=scens, actor=actor, words=words)
 save(dataframe_galaxy1,file="dataframe_galaxy1.Rda")
+
+
+load("dataframe_galaxy1.Rda")
+head(dataframe_galaxy1)
+
+dataframe_galaxy1 %>% group_by(scene,actor) %>% summarize(paste(words,collapse = " ")) %>% View()
+
+                                                          
