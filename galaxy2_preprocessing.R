@@ -4,7 +4,7 @@ if(!require(qdap)){ install.packages('qdap')}; require(qdap)
 if(!require(dplyr)){ install.packages('dplyr')}; require(dplyr) 
 
 # setwd("C:\\Users\\MYCOM\\Dropbox\\DataMiningTeamProject")
-setwd("C:\\Users\\UOS\\Dropbox\\데이터마이닝\MTM")
+setwd("C:\\Users\\UOS\\Dropbox\\데이터마이닝\\MTM")
 script_galaxy2 <- readLines("Galaxy2.txt")
 
 # 구두점제거
@@ -53,7 +53,7 @@ actor_word <- function(x){
   else {
     actor_list <- lapply(1:(length(actor_seps)-1), function(i) paste(x[(actor_seps[i]+1):(actor_seps[i+1]-1)],collapse = " "))
     if (length(x)>1){
-      actor_list [[length(actor_seps)]] <- x[(actor_seps[length(actor_seps)]+1):length(x)]
+      actor_list [[length(actor_seps)]] <- x[(actor_seps[length(actor_seps)]+1):length(x)]  ### 왜 paste 없지?
   }
 }
 names(actor_list) <- x[actor_seps] 
